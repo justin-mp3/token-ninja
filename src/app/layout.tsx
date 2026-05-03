@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import Script from 'next/script'
 import { Nav } from '@/components/Nav'
 import { BackgroundSword } from '@/components/BackgroundSword'
 import './globals.css'
@@ -28,11 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Script
-          type="module"
-          src="https://unpkg.com/metallicss@4.0.3/dist/metallicss.min.js"
-          strategy="afterInteractive"
-        />
         {/* Faded ASCII sword watermark — z-index 0, behind everything */}
         <BackgroundSword />
         {/* Nav sits at z-50 via its own fixed positioning */}
