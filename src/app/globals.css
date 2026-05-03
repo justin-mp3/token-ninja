@@ -1,26 +1,84 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Metallic silver palette */
+  --color-silver:       #94a3b8;
+  --color-silver-light: #cbd5e1;
+  --color-silver-bright:#e2e8f0;
+  --color-silver-steel: #475569;
+  --color-silver-border:#334155;
+  --color-green:        #10b981;
+  --color-surface:      #0d0d0d;
+  --color-border:       #1e2530;
+  --color-muted:        #6b7280;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #050505;
+  color: #f0f0f0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(148, 163, 184, 0.2);
+  color: #e2e8f0;
+}
+
+/* ── Coin/stack animations (kept for reference) ─────────────────────── */
+@keyframes coinDrop {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes stackFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes shimmerPulse {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── UI animations ───────────────────────────────────────────────────── */
+@keyframes terminalBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Metallic gradient text helper ──────────────────────────────────── */
+.text-metallic {
+  background-image: linear-gradient(135deg, #94a3b8 0%, #f1f5f9 45%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Prose overrides for dark blog ───────────────────────────────────── */
+.prose {
+  --tw-prose-body: #d1d5db;
+  --tw-prose-headings: #f5f5f5;
+  --tw-prose-lead: #9ca3af;
+  --tw-prose-links: #cbd5e1;
+  --tw-prose-bold: #f5f5f5;
+  --tw-prose-counters: #6b7280;
+  --tw-prose-bullets: #94a3b8;
+  --tw-prose-hr: #1e2530;
+  --tw-prose-quotes: #d1d5db;
+  --tw-prose-quote-borders: #94a3b8;
+  --tw-prose-code: #cbd5e1;
+  --tw-prose-pre-code: #d1d5db;
+  --tw-prose-pre-bg: #0d0d0d;
+  --tw-prose-th-borders: #1e2530;
+  --tw-prose-td-borders: #1e2530;
 }
